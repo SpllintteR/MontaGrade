@@ -1,8 +1,10 @@
 package data;
 
-import static ui.Main.*;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Semestre;
 
 /**
  * @author Usuario
@@ -11,18 +13,17 @@ import java.io.Serializable;
 public class Horario implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
-	private static final long	serialVersionUID	= 1L;
-	private Materia[][]			materias			= new Materia[QTD_SEMESTRES][QTD_DISCIPLINA_POR_SEMESTRE];
+	private static final long		serialVersionUID	= 1L;
+	private final List<Semestre>	semestres			= new ArrayList<>();
 
-	/**
-	 * @param m
-	 * @param semestre
-	 * @param materia
-	 */
-	public void addMateria(Materia m, int semestre, int materia) {
-		materias[semestre][materia] = m;
+	public void addSemestre(final Semestre s) {
+		semestres.add(s);
+	}
+
+	public Semestre get(final int i) {
+		return semestres.get(i);
 	}
 
 }
