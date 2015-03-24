@@ -22,8 +22,12 @@ public class Horario implements Serializable {
 		semestres.add(s);
 	}
 
-	public Semestre get(final int i) {
+	public Semestre getSemestre(final int i) {
 		return semestres.get(i);
+	}
+
+	public int getSemestreCount() {
+		return semestres.size();
 	}
 
 }

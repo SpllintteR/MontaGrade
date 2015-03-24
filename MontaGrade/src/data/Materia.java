@@ -11,7 +11,6 @@ public class Materia implements Serializable {
 	 *
 	 */
 	private static final long	serialVersionUID	= 1L;
-	private final int			semestre;
 	private Aula				aula1;
 	private Aula				aula2;
 	private String				nome;
@@ -21,8 +20,7 @@ public class Materia implements Serializable {
 	 * @param semestre
 	 * @param nome
 	 */
-	public Materia(final int semestre, final String nome) {
-		this.semestre = semestre;
+	public Materia(final String nome) {
 		this.nome = nome;
 	}
 
@@ -52,16 +50,18 @@ public class Materia implements Serializable {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return
-	 */
-	public int getSemestre() {
-		return semestre;
-	}
-
 	@Override
 	public boolean equals(final Object obj) {
 		Materia other = (Materia) obj;
 		return this.getNome().equals(other.getNome());
+	}
+
+	public boolean horarioCoincide(final Materia m) {
+		return aula1.mesmoHorario(m.aula1) || aula1.mesmoHorario(m.aula2) || aula2.mesmoHorario(m.aula1) || aula2.mesmoHorario(m.aula2);
+	}
+
+	@Override
+	public String toString() {
+		return getNome();
 	}
 }

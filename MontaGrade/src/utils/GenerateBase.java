@@ -21,31 +21,31 @@ public class GenerateBase {
 		Aula aula2;
 		Semestre s = new Semestre();
 
-		Materia m = new Materia(1, "M11");
+		Materia m = new Materia("M11");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M12");
+		m = new Materia("M12");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M13");
+		m = new Materia("M13");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M14");
+		m = new Materia("M14");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M15");
+		m = new Materia("M15");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
@@ -53,68 +53,69 @@ public class GenerateBase {
 		h.addSemestre(s);
 		// #################################
 
-		m = new Materia(1, "M21");
+		s = new Semestre();
+		m = new Materia("M21");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M22");
+		m = new Materia("M22");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M23");
+		m = new Materia("M23");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(0).get(2));
+		m.setPreRequisito(h.getSemestre(0).getMateria(2));
 		s.add(m);
 
-		m = new Materia(1, "M24");
+		m = new Materia("M24");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M25");
+		m = new Materia("M25");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(0).get(4));
+		m.setPreRequisito(h.getSemestre(0).getMateria(4));
 		s.add(m);
 		h.addSemestre(s);
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M31");
+		m = new Materia("M31");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M32");
+		m = new Materia("M32");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
-		m.setPreRequisito(h.get(1).get(1));
+		m.setPreRequisito(h.getSemestre(1).getMateria(1));
 
-		m = new Materia(1, "M33");
+		m = new Materia("M33");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M34");
+		m = new Materia("M34");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
-		m.setPreRequisito(h.get(1).get(4));
+		m.setPreRequisito(h.getSemestre(1).getMateria(4));
 
-		m = new Materia(1, "M35");
+		m = new Materia("M35");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
@@ -123,32 +124,32 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M41");
+		m = new Materia("M41");
 		aula1 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
-		m.setPreRequisito(h.get(2).get(3));
+		m.setPreRequisito(h.getSemestre(2).getMateria(3));
 
-		m = new Materia(1, "M42");
+		m = new Materia("M42");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M43");
+		m = new Materia("M43");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M44");
+		m = new Materia("M44");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M45");
+		m = new Materia("M45");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
@@ -157,34 +158,34 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M51");
+		m = new Materia("M51");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(3).get(0));
+		m.setPreRequisito(h.getSemestre(3).getMateria(0));
 		s.add(m);
 
-		m = new Materia(1, "M52");
+		m = new Materia("M52");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M53");
+		m = new Materia("M53");
 		aula1 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(3).get(3));
+		m.setPreRequisito(h.getSemestre(3).getMateria(3));
 		s.add(m);
 
-		m = new Materia(1, "M54");
+		m = new Materia("M54");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(3).get(1));
+		m.setPreRequisito(h.getSemestre(3).getMateria(1));
 		s.add(m);
 
-		m = new Materia(1, "M55");
+		m = new Materia("M55");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
@@ -193,33 +194,33 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M61");
+		m = new Materia("M61");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M62");
+		m = new Materia("M62");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(4).get(1));
+		m.setPreRequisito(h.getSemestre(4).getMateria(1));
 		s.add(m);
 
-		m = new Materia(1, "M63");
+		m = new Materia("M63");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(4).get(0));
+		m.setPreRequisito(h.getSemestre(4).getMateria(0));
 		s.add(m);
 
-		m = new Materia(1, "M64");
+		m = new Materia("M64");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M65");
+		m = new Materia("M65");
 		aula1 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
@@ -228,33 +229,33 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M71");
+		m = new Materia("M71");
 		aula1 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(5).get(3));
+		m.setPreRequisito(h.getSemestre(5).getMateria(3));
 		s.add(m);
 
-		m = new Materia(1, "M72");
+		m = new Materia("M72");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M73");
+		m = new Materia("M73");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(5).get(2));
+		m.setPreRequisito(h.getSemestre(5).getMateria(2));
 		s.add(m);
 
-		m = new Materia(1, "M74");
+		m = new Materia("M74");
 		aula1 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M75");
+		m = new Materia("M75");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
@@ -263,33 +264,33 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M81");
+		m = new Materia("M81");
 		aula1 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(6).get(1));
+		m.setPreRequisito(h.getSemestre(6).getMateria(1));
 		s.add(m);
 
-		m = new Materia(1, "M82");
+		m = new Materia("M82");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(6).get(3));
+		m.setPreRequisito(h.getSemestre(6).getMateria(3));
 		s.add(m);
 
-		m = new Materia(1, "M83");
+		m = new Materia("M83");
 		aula1 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M84");
+		m = new Materia("M84");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M85");
+		m = new Materia("M85");
 		aula1 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
@@ -298,32 +299,32 @@ public class GenerateBase {
 
 		// #################################
 		s = new Semestre();
-		m = new Materia(1, "M91");
+		m = new Materia("M91");
 		aula1 = new Aula(DiaDaSemana.QUINTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.QUARTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
-		m.setPreRequisito(h.get(7).get(0));
+		m.setPreRequisito(h.getSemestre(7).getMateria(0));
 		s.add(m);
 
-		m = new Materia(1, "M92");
+		m = new Materia("M92");
 		aula1 = new Aula(DiaDaSemana.SEXTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M93");
+		m = new Materia("M93");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEXTA, Periodo.P2);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M94");
+		m = new Materia("M94");
 		aula1 = new Aula(DiaDaSemana.QUARTA, Periodo.P1);
 		aula2 = new Aula(DiaDaSemana.SEGUNDA, Periodo.P1);
 		m.setAulas(aula1, aula2);
 		s.add(m);
 
-		m = new Materia(1, "M95");
+		m = new Materia("M95");
 		aula1 = new Aula(DiaDaSemana.TERCA, Periodo.P2);
 		aula2 = new Aula(DiaDaSemana.QUINTA, Periodo.P2);
 		m.setAulas(aula1, aula2);

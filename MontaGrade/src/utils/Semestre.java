@@ -29,7 +29,11 @@ public class Semestre implements Serializable {
 		materias.add(m);
 	}
 
-	public Materia get(final int i) {
+	public Materia getMateria(final int i) {
 		return materias.get(i);
+	}
+
+	public int getMateriaCount() {
+		return materias.size();
 	}
 }
