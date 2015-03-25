@@ -45,7 +45,7 @@ public class MontaGrade implements Estado, Antecessor {
 
 	@Override
 	public boolean ehMeta() {
-		return materias.size() == 5;
+		return materias.size() == 4;
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class MontaGrade implements Estado, Antecessor {
 	/** Lista de sucessores */
 	@Override
 	public List<Estado> sucessores() {
-		List<Estado> suc = new LinkedList(); // Lista de sucessores
+		List<Estado> suc = new LinkedList<Estado>(); // Lista de sucessores
 		List<Materia> mats = new ArrayList<>();
 		boolean xDone = false;
 		while (!xDone) {
@@ -70,7 +70,6 @@ public class MontaGrade implements Estado, Antecessor {
 				}
 			}
 		}
-		// Retornar a lista de Sucessores
 		return suc;
 	}
 
@@ -84,13 +83,13 @@ public class MontaGrade implements Estado, Antecessor {
 			return true;
 		}
 		for (Materia mat : mats) {
-			if (!mat.horarioCoincide(m)) {
-				MontaGrade n = new MontaGrade(mats, m);
-				estados.add(n);
-				return true;
+			if (mat.horarioCoincide(m)) {
+				return false;
 			}
 		}
-		return false;
+		MontaGrade n = new MontaGrade(mats, m);
+		estados.add(n);
+		return true;
 	}
 
 	/** Lista de antecessores, para busca bidirecional */
@@ -203,7 +202,6 @@ public class MontaGrade implements Estado, Antecessor {
 	}
 
 	private static List<Materia> getMateriasFeitas() {
-		// TODO:tela que retorna as opções de materias que o aluno fez
 		List<Materia> materias = new ArrayList<>();
 		System.out.println("Materias feitas:");
 		materias.add(h.getSemestre(0).getMateria(0));
@@ -216,30 +214,30 @@ public class MontaGrade implements Estado, Antecessor {
 		System.out.println(h.getSemestre(0).getMateria(3));
 		materias.add(h.getSemestre(0).getMateria(4));
 		System.out.println(h.getSemestre(0).getMateria(4));
-		materias.add(h.getSemestre(1).getMateria(0));
-		System.out.println(h.getSemestre(1).getMateria(0));
-		materias.add(h.getSemestre(1).getMateria(1));
-		System.out.println(h.getSemestre(1).getMateria(1));
-		materias.add(h.getSemestre(1).getMateria(2));
-		System.out.println(h.getSemestre(1).getMateria(3));
-		materias.add(h.getSemestre(1).getMateria(3));
-		System.out.println(h.getSemestre(1).getMateria(3));
-		materias.add(h.getSemestre(2).getMateria(0));
-		System.out.println(h.getSemestre(2).getMateria(0));
-		materias.add(h.getSemestre(2).getMateria(2));
-		System.out.println(h.getSemestre(2).getMateria(2));
-		materias.add(h.getSemestre(2).getMateria(1));
-		System.out.println(h.getSemestre(2).getMateria(1));
-		materias.add(h.getSemestre(2).getMateria(4));
-		System.out.println(h.getSemestre(2).getMateria(4));
-		materias.add(h.getSemestre(3).getMateria(3));
-		System.out.println(h.getSemestre(3).getMateria(3));
-		materias.add(h.getSemestre(3).getMateria(4));
-		System.out.println(h.getSemestre(3).getMateria(4));
-		materias.add(h.getSemestre(3).getMateria(1));
-		System.out.println(h.getSemestre(3).getMateria(1));
-		materias.add(h.getSemestre(3).getMateria(2));
-		System.out.println(h.getSemestre(3).getMateria(2));
+		// materias.add(h.getSemestre(1).getMateria(0));
+		// System.out.println(h.getSemestre(1).getMateria(0));
+		// materias.add(h.getSemestre(1).getMateria(1));
+		// System.out.println(h.getSemestre(1).getMateria(1));
+		// materias.add(h.getSemestre(1).getMateria(2));
+		// System.out.println(h.getSemestre(1).getMateria(3));
+		// materias.add(h.getSemestre(1).getMateria(3));
+		// System.out.println(h.getSemestre(1).getMateria(3));
+		// materias.add(h.getSemestre(2).getMateria(0));
+		// System.out.println(h.getSemestre(2).getMateria(0));
+		// materias.add(h.getSemestre(2).getMateria(2));
+		// System.out.println(h.getSemestre(2).getMateria(2));
+		// materias.add(h.getSemestre(2).getMateria(1));
+		// System.out.println(h.getSemestre(2).getMateria(1));
+		// materias.add(h.getSemestre(2).getMateria(4));
+		// System.out.println(h.getSemestre(2).getMateria(4));
+		// materias.add(h.getSemestre(3).getMateria(3));
+		// System.out.println(h.getSemestre(3).getMateria(3));
+		// materias.add(h.getSemestre(3).getMateria(4));
+		// System.out.println(h.getSemestre(3).getMateria(4));
+		// materias.add(h.getSemestre(3).getMateria(1));
+		// System.out.println(h.getSemestre(3).getMateria(1));
+		// materias.add(h.getSemestre(3).getMateria(2));
+		// System.out.println(h.getSemestre(3).getMateria(2));
 		return materias;
 	}
 }
