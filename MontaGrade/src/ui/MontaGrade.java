@@ -7,14 +7,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import utils.GenerateBase;
 import utils.Semestre;
-import busca.Antecessor;
 import busca.BuscaIterativo;
 import busca.BuscaLargura;
 import busca.BuscaProfundidade;
 import busca.Estado;
+import busca.MostraStatusConsole;
 import busca.Nodo;
 import data.Horario;
 import data.HorarioManager;
@@ -24,11 +25,13 @@ import data.Materia;
  * Solucao para o problema dos misssionarios e canibais.
  *
  */
-public class MontaGrade implements Estado, Antecessor {
+public class MontaGrade implements Estado {
 
-	private static Horario			h;
-	private static List<Materia>	materias;
-	private static List<Materia>	materiasFeitas;
+	private static final int META = 5;
+
+	private static Horario h;
+	private static List<Materia> materias;
+	private static List<Materia> materiasFeitas;
 
 	public String getDescricao() {
 		return "Monta a Grade";
@@ -38,14 +41,14 @@ public class MontaGrade implements Estado, Antecessor {
 		materias = new ArrayList<>();
 	}
 
-	public MontaGrade(final List<Materia> mats, final Materia m) {
+	public MontaGrade(final List<Materia> mats) {
 		materias = mats;
-		materias.add(m);
 	}
 
 	@Override
 	public boolean ehMeta() {
-		return materias.size() == 4;
+		boolean resultado = materias.size() == META && ehValido();
+		return resultado;
 	}
 
 	@Override
@@ -57,45 +60,80 @@ public class MontaGrade implements Estado, Antecessor {
 	@Override
 	public List<Estado> sucessores() {
 		List<Estado> suc = new LinkedList<Estado>(); // Lista de sucessores
+
+		addMaterias(suc);
+		addMaterias(suc);
+		addMateriasPrimeirosSemestres(suc);
+		addMateriasPrimeirosSemestres(suc);
+
+		return suc;
+	}
+
+	private void addMaterias(List<Estado> suc) {
 		List<Materia> mats = new ArrayList<>();
-		boolean xDone = false;
-		while (!xDone) {
-			for (int i = 0; (i < h.getSemestreCount()) && !xDone; i++) {
-				Semestre s = h.getSemestre(i);
-				for (int j = 0; (j < s.getMateriaCount()) && !xDone; j++) {
-					Materia m = s.getMateria(j);
-					if (tryAddMateria(suc, mats, m)) {
-						xDone = suc.size() == 4;
+		Random random = new Random();
+
+		while (mats.size() < META) {
+			Semestre s = h.getSemestre(random.nextInt(h.getSemestreCount()));
+			Materia m = s.getMateria(random.nextInt(s.getMateriaCount()));
+			Materia preRequisito = m.getPreRequisito();
+			if (preRequisito == null) {
+				if (!materiasFeitas.contains(m)) {
+					mats.add(m);
+				}
+			} else if (materiasFeitas.contains(preRequisito) && !materiasFeitas.contains(m)) {
+				mats.add(m);
+			}
+		}
+
+		suc.add(new MontaGrade(mats));
+	}
+	
+	private void addMateriasPrimeirosSemestres(List<Estado> suc) {
+		List<Materia> mats = new ArrayList<>();
+		Random random = new Random();
+
+		while (mats.size() < META) {
+			Semestre s = h.getSemestre(random.nextInt(h.getSemestreCount() - 5));
+			Materia m = s.getMateria(random.nextInt(s.getMateriaCount()));
+			Materia preRequisito = m.getPreRequisito();
+			if (preRequisito == null) {
+				if (!materiasFeitas.contains(m)) {
+					mats.add(m);
+				}
+			} else if (materiasFeitas.contains(preRequisito) && !materiasFeitas.contains(m)) {
+				mats.add(m);
+			}
+		}
+
+		suc.add(new MontaGrade(mats));
+	}
+
+	private boolean ehValido() {
+		List<Materia> materiasParaVerificar = new ArrayList<Materia>();
+		for (Materia materia : materias) {
+			materiasParaVerificar.add(materia);
+		}
+
+		for (int i = 0; i < materias.size(); i++) {
+			Materia mat = materias.get(i);
+			// Materia preRequisito = mat.getPreRequisito();
+			// if (!(preRequisito != null &&
+			// materiasFeitas.contains(preRequisito)) ||
+			// materiasFeitas.contains(mat)) {
+			// return false;
+			// }
+
+			for (int j = 0; j < materiasParaVerificar.size(); j++) {
+				Materia matParaVerificar = materias.get(j);
+				if (i != j) {
+					if (mat.horarioCoincide(matParaVerificar)) {
+						return false;
 					}
 				}
 			}
 		}
-		return suc;
-	}
-
-	private boolean tryAddMateria(final List<Estado> estados, final List<Materia> mats, final Materia m) {
-		if (materiasFeitas.contains(m)) {
-			return false;
-		}
-		if (mats.size() == 0) {
-			MontaGrade n = new MontaGrade(mats, m);
-			estados.add(n);
-			return true;
-		}
-		for (Materia mat : mats) {
-			if (mat.horarioCoincide(m)) {
-				return false;
-			}
-		}
-		MontaGrade n = new MontaGrade(mats, m);
-		estados.add(n);
 		return true;
-	}
-
-	/** Lista de antecessores, para busca bidirecional */
-	@Override
-	public List<Estado> antecessores() {
-		return sucessores();
 	}
 
 	@Override
@@ -121,7 +159,6 @@ public class MontaGrade implements Estado, Antecessor {
 		}
 
 		materiasFeitas = getMateriasFeitas();
-		MontaGrade inicial = new MontaGrade();
 
 		String str;
 		BufferedReader teclado;
@@ -136,17 +173,18 @@ public class MontaGrade implements Estado, Antecessor {
 		System.out.print("Opcao: ");
 		str = teclado.readLine().toUpperCase();
 		while (!str.equals("S")) {
+			MontaGrade inicial = new MontaGrade();
 			if (str.equals("1")) {
 				System.out.println("Busca em Largura");
-				n = new BuscaLargura().busca(inicial);
+				n = new BuscaLargura(new MostraStatusConsole()).busca(inicial);
 			} else {
 				if (str.equals("2")) {
 					System.out.println("Busca em Profundidade");
-					n = new BuscaProfundidade(20).busca(inicial);
+					n = new BuscaProfundidade(1000, new MostraStatusConsole()).busca(inicial);
 				} else {
 					if (str.equals("3")) {
 						System.out.println("Busca em Profundidade Iterativo");
-						n = new BuscaIterativo().busca(inicial);
+						n = new BuscaIterativo(new MostraStatusConsole()).busca(inicial);
 					}
 				}
 			}
@@ -154,7 +192,7 @@ public class MontaGrade implements Estado, Antecessor {
 				if (n == null) {
 					System.out.println("Sem Solucao!");
 				} else {
-					System.out.println("Solucao:\n" + n.montaCaminho() + "\n\n");
+					System.out.println("Solucao:\n" + n + "\n\n");
 				}
 			}
 			System.out.print("Digite sua opcao de busca { Digite S para finalizar }\n");

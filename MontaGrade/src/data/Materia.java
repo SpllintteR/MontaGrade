@@ -50,6 +50,10 @@ public class Materia implements Serializable {
 		this.nome = nome;
 	}
 
+	public Materia getPreRequisito() {
+		return preRequisito;
+	}
+
 	@Override
 	public boolean equals(final Object obj) {
 		Materia other = (Materia) obj;
