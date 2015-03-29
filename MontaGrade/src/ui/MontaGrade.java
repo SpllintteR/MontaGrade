@@ -117,12 +117,6 @@ public class MontaGrade implements Estado {
 
 		for (int i = 0; i < materias.size(); i++) {
 			Materia mat = materias.get(i);
-			// Materia preRequisito = mat.getPreRequisito();
-			// if (!(preRequisito != null &&
-			// materiasFeitas.contains(preRequisito)) ||
-			// materiasFeitas.contains(mat)) {
-			// return false;
-			// }
 
 			for (int j = 0; j < materiasParaVerificar.size(); j++) {
 				Materia matParaVerificar = materias.get(j);
@@ -194,6 +188,7 @@ public class MontaGrade implements Estado {
 				} else {
 					System.out.println("Solucao:\n" + n + "\n\n");
 				}
+				System.out.println("Profundidade:\n" + n.getProfundidade() + "\n\n");
 			}
 			System.out.print("Digite sua opcao de busca { Digite S para finalizar }\n");
 			System.out.print("\t1  -  Largura\n");
@@ -252,30 +247,31 @@ public class MontaGrade implements Estado {
 		System.out.println(h.getSemestre(0).getMateria(3));
 		materias.add(h.getSemestre(0).getMateria(4));
 		System.out.println(h.getSemestre(0).getMateria(4));
-		// materias.add(h.getSemestre(1).getMateria(0));
-		// System.out.println(h.getSemestre(1).getMateria(0));
-		// materias.add(h.getSemestre(1).getMateria(1));
-		// System.out.println(h.getSemestre(1).getMateria(1));
-		// materias.add(h.getSemestre(1).getMateria(2));
-		// System.out.println(h.getSemestre(1).getMateria(3));
-		// materias.add(h.getSemestre(1).getMateria(3));
-		// System.out.println(h.getSemestre(1).getMateria(3));
-		// materias.add(h.getSemestre(2).getMateria(0));
-		// System.out.println(h.getSemestre(2).getMateria(0));
-		// materias.add(h.getSemestre(2).getMateria(2));
-		// System.out.println(h.getSemestre(2).getMateria(2));
-		// materias.add(h.getSemestre(2).getMateria(1));
-		// System.out.println(h.getSemestre(2).getMateria(1));
-		// materias.add(h.getSemestre(2).getMateria(4));
-		// System.out.println(h.getSemestre(2).getMateria(4));
-		// materias.add(h.getSemestre(3).getMateria(3));
-		// System.out.println(h.getSemestre(3).getMateria(3));
-		// materias.add(h.getSemestre(3).getMateria(4));
-		// System.out.println(h.getSemestre(3).getMateria(4));
-		// materias.add(h.getSemestre(3).getMateria(1));
-		// System.out.println(h.getSemestre(3).getMateria(1));
-		// materias.add(h.getSemestre(3).getMateria(2));
-		// System.out.println(h.getSemestre(3).getMateria(2));
+		
+//		 materias.add(h.getSemestre(1).getMateria(0));
+//		 System.out.println(h.getSemestre(1).getMateria(0));
+//		 materias.add(h.getSemestre(1).getMateria(1));
+//		 System.out.println(h.getSemestre(1).getMateria(1));
+//		 materias.add(h.getSemestre(1).getMateria(2));
+//		 System.out.println(h.getSemestre(1).getMateria(3));
+//		 materias.add(h.getSemestre(1).getMateria(3));
+//		 System.out.println(h.getSemestre(1).getMateria(3));
+//		 materias.add(h.getSemestre(2).getMateria(0));
+//		 System.out.println(h.getSemestre(2).getMateria(0));
+//		 materias.add(h.getSemestre(2).getMateria(2));
+//		 System.out.println(h.getSemestre(2).getMateria(2));
+//		 materias.add(h.getSemestre(2).getMateria(1));
+//		 System.out.println(h.getSemestre(2).getMateria(1));
+//		 materias.add(h.getSemestre(2).getMateria(4));
+//		 System.out.println(h.getSemestre(2).getMateria(4));
+//		 materias.add(h.getSemestre(3).getMateria(3));
+//		 System.out.println(h.getSemestre(3).getMateria(3));
+//		 materias.add(h.getSemestre(3).getMateria(4));
+//		 System.out.println(h.getSemestre(3).getMateria(4));
+//		 materias.add(h.getSemestre(3).getMateria(1));
+//		 System.out.println(h.getSemestre(3).getMateria(1));
+//		 materias.add(h.getSemestre(3).getMateria(2));
+//		 System.out.println(h.getSemestre(3).getMateria(2));
 		return materias;
 	}
 }
